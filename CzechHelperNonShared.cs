@@ -120,8 +120,8 @@ C5 BE";
             }
         }
 
-        input = SH.KeepAfterFirst(input, "<!DOCTYPE html>", true);
-        input = SH.RemoveAfterFirst(input, "</html");
+        input = SHParts.KeepAfterFirst(input, "<!DOCTYPE html>", true);
+        input = SHParts.RemoveAfterFirst(input, "</html");
 
         input = input.Replace("3D\"", "=\"");
 
@@ -140,10 +140,10 @@ C5 BE";
         input = input.Replace("=", "");
         input = input.Replace(";3D", "=");
 
-        input = SHReplace.ReplaceAllDnArgs(input, "=\"", ";\"");
-        input = SHReplace.ReplaceAllDnArgs(input, "=", "");
+        input = input.Replace("=\"", ";\"");
+        input = input.Replace("=", "");
         // zde je chyba. nahrazuje to správně ale =\" se mi vloží i na konce hodnoty atributů.
-        input = SHReplace.ReplaceAllDnArgs(input, ";\"", "=\"");
+        input = input.Replace(";\"", "=\"");
 
         return input;
     }
@@ -158,9 +158,9 @@ C5 BE";
 
             ThrowEx.DifferentCountInLists<string>("utf8hexL", utf8hexL, "czechLettersL", czechLettersL);
 
-            CA.Prepend(" ", utf8hexL);
+            CASH.Prepend(" ", utf8hexL);
 
-            CA.Replace(utf8hexL, " ", "=");
+            CASH.Replace(utf8hexL, " ", "=");
 
             for (int i = 0; i < czechLettersL.Count; i++)
             {

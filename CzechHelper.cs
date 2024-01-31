@@ -1,5 +1,3 @@
-using SunamoI18N.Values;
-
 namespace SunamoI18N;
 
 
@@ -62,13 +60,13 @@ public partial class CzechHelper
             f = dear + AllStrings.space + sess.i18n(XlfKeys.sir) + " " + name;
         }
 
-        return SH.FirstCharUpper(f);
+        return char.ToUpper(f[0]) + f.Substring(1);
     }
 
     public static bool GetSexFromSurname(string name)
     {
         // ová = á
-        if (SH.EndsWithArray(name, new String[] { "ova", "á" }))
+        if (name.EndsWith("ova") || name.EndsWith("á"))
         {
             return true;
         }
